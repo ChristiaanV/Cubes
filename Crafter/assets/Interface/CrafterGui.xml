@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<nifty xmlns="http://nifty-gui.sourceforge.net/nifty-1.3.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://niftygui.sourceforge.net/nifty-1.3.xsd http://nifty-gui.sourceforge.net/nifty-1.3.xsd">
+    <useControls filename="nifty-default-controls.xml"/>
+    <useStyles filename="Interface/crafter-style/crafter-styles.xml"/>
+    <registerSound id="click" filename="Sounds/ClickSound.ogg"/>
+    <screen id="Start" backgroundImage="" controller="mygame.MainMenuState">
+        
+	<!--Background-->
+	<layer id="lyrBackground" backgroundColor="#00660000" backgroundImage="Interface/background.png" childLayout="center"/>
+        
+	<!--Menu-->
+	<layer id="lyrMenu" childLayout="vertical">
+	    <panel id="GPanel14" height="7%" width="50%" align="center" childLayout="horizontal">
+		<control name="button" id="btnStartGame" height="*" width="*" label="Start Game" childLayout="center" y="33" x="261">
+		    <interact onClick="startGameClicked()"/>
+		    <effect>
+			<onStartHover name="playSound" sound="click"/>
+		    </effect>		    
+		</control>
+		<control name="button" id="btnJoinGame" height="*" width="*" label="Join Game" childLayout="center" y="14" x="162">
+		    <interact onClick="joinGameClicked()"/>
+		    <effect>
+			<onStartHover name="playSound" sound="click"/>
+		    </effect>
+		</control>
+		<control name="button" id="btnOptions" height="*" width="*" label="Options" childLayout="center" y="16" x="15">
+		    <interact onClick="optionsClicked()"/>
+		    <effect>
+			<onStartHover name="playSound" sound="click"/>
+		    </effect>
+		</control>
+	    </panel>
+	</layer>
+	
+	<!--Menu screens-->
+	<layer id="lyrPanels" childLayout="center">
+	    <panel id="pnlMenuScreensContainer" height="80%" style="nifty-panel-red" backgroundColor="#00000000" width="80%" childLayout="center">
+		
+		<!--Options panel-->
+		<panel id="pnlOptions" height="100%" backgroundColor="#00000000" width="100%" childLayout="horizontal">
+		    <panel id="pnlControlsPanelContainer" height="100%" backgroundColor="#00003300" width="40%" childLayout="vertical">
+			<control name="label" id="GLabel6" wrap="false" text="Controls" height="50px" style="nifty-label" color="#ffffffff" font="aurulent-sans-16.fnt" width="*"/>
+			<control name="scrollPanel" id="GScrollPanel4" vertical="true" height="*" horizontal="false" width="100%"/>
+		    </panel>
+		    <panel id="pnlSettingAssestsContainer" height="100%" width="*" childLayout="vertical">
+			<panel id="pnlResources" height="50%" backgroundColor="#00003300" width="90%" align="right" childLayout="vertical">
+			    <control name="label" id="GLabel7" text="Resource Packs" height="50px" font="aurulent-sans-16.fnt" width="*" y="106" x="210"/>
+			    <panel id="pnlResourceListsContainer" height="*" backgroundColor="#006600ff" width="100%" childLayout="horizontal">
+				<control name="scrollPanel" id="GScrollPanel6" vertical="true" height="100%" horizontal="false" width="50%"/>
+				<control name="scrollPanel" id="GScrollPanel7" vertical="true" height="100%" horizontal="false" width="50%"/>
+			    </panel>
+			</panel>
+			<panel id="pnlSettings" height="*" width="90%" align="right" childLayout="vertical">
+			    <control name="label" id="GLabel8" text="Settings" height="50px" font="aurulent-sans-16.fnt" width="*" align="center"/>
+			</panel>
+		    </panel>
+		</panel>
+
+
+		<!-- Start Screen Panel-->
+		<panel id="pnlStartGame" height="100%" backgroundColor="#00000000" width="100%" childLayout="vertical">
+		    <control name="label" id="lblStartGame" wrap="false" text="Start Game" height="50px" font="aurulent-sans-16.fnt" width="*" textLineHeight="20px" textMinHeight="30px" y="284" x="242"/>
+		    <control name="scrollPanel" id="WorldsList" vertical="true" height="*" horizontal="false" width="96%" align="center" childClip="true" y="205" x="176"/>
+		    <panel id="pnlStartGameButtons" height="10%" width="96%" align="center" childLayout="horizontal">
+			<control name="button" id="btnStartGameNewWorld" height="75%" width="25%" label="New world" childLayout="center" y="19" x="409"/>
+			<control name="button" id="btnStartGameRenameWorld" height="75%" width="25%" label="Edit" childLayout="center"/>
+			<control name="button" id="btnStartGameDeleteWorld" height="75%" width="25%" label="Delete" childLayout="center"/>
+			<control name="button" id="btnStartGamePlayWorld" height="75%" width="25%" label="Play" childLayout="center">
+			    <interact onClick="startGamePlayWorldClicked()"/>
+			</control>
+		    </panel>
+		</panel>
+
+
+		<!--Join game panel -->
+		<panel id="pnlJoinGame" height="100%" backgroundColor="#00000000" width="100%" childLayout="vertical">
+		    <control name="label" id="lblJoinGame" text="Join Game" height="50px" font="aurulent-sans-16.fnt" width="100%" y="183" x="293"/>
+		    <control name="scrollPanel" id="ServerList" vertical="true" height="*" horizontal="false" width="96%" align="center"/>
+		    <panel id="pnlServerOptionsContainer" height="10%" width="96%" align="center" childLayout="horizontal">
+			<control name="button" id="btnAddServer" height="75%" width="25%" label="Add Server" childLayout="center" y="28" x="211"/>
+			<control name="button" id="btnEditServer" height="75%" width="25%" label="Edit" childLayout="center" y="33" x="377"/>
+			<control name="button" id="btnDeleteServer" height="75%" width="25%" label="Delete" childLayout="center" y="24" x="484"/>
+			<control name="button" id="btnJoinServer" height="75%" width="25%" label="Join" childLayout="center" y="17" x="567"/>
+		    </panel>
+		</panel>
+	    
+	    </panel>
+	</layer>
+    </screen>
+    <screen id="Ingame" backgroundImage="" controller="mygame.MainMenuState">
+	
+    </screen>
+</nifty>

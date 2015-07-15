@@ -1,0 +1,28 @@
+Material My shiny custom material : Common/MatDefs/Light/Lighting.j3md {
+     MaterialParameters {
+        DiffuseMap : Textures/Terrain/Pond/Pond.jpg
+        UseMaterialColors : true
+        Specular : 1.0 1.0 1.0 1.0
+        Diffuse : 1.0 1.0 1.0 1.0
+        Shininess : 128.0
+        Ambient : 1.0 1.0 1.0 1.0
+        NormalMap : Textures/Terrain/Pond/Pond_normal.png
+        HighQuality : false
+        VTangent : false
+        LATC : false
+        UseAlpha : false
+        VertexLighting : false
+        Minnaert : false
+        SteepParallax : false
+        PackedNormalParallax : false
+        ShadowIntensity : 0.0
+     }
+
+    AdditionalRenderState {
+      Wireframe Off
+      DepthWrite Off
+      Blend Off
+      PointSprite Off
+      FaceCull Back
+    }
+}
