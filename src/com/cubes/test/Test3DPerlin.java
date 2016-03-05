@@ -20,6 +20,7 @@ public class Test3DPerlin extends SimpleApplication{
     private int xChunks =10;
     private int yChunks =10;
     private int zChunks =10;
+    private int counter = 0;
     public static void main(String[] args){
         Logger.getLogger("").setLevel(Level.SEVERE);
         Test3DPerlin app = new Test3DPerlin();
@@ -35,6 +36,8 @@ public class Test3DPerlin extends SimpleApplication{
 
     @Override
     public void simpleInitApp(){
+	
+	long startTime = System.nanoTime();
         CubesTestAssets.registerBlocks();
 	CubesTestAssets.initializeEnvironment(this);
 	CubesSettings settingss = new CubesSettings(this);
@@ -53,7 +56,8 @@ public class Test3DPerlin extends SimpleApplication{
 		for(int z=0;z<blockTerrain.getSettings().getChunkSizeZ()*zChunks;z++){
 		    if(noise.eval(x/evalSize, y/evalSize, z/evalSize)>((float)(y*2))/(blockTerrain.getSettings().getChunkSizeY()*yChunks)-1){
 			blockTerrain.setBlock(x,y,z, CubesTestAssets.BLOCK_GRASS);
-		    }
+			
+		    }counter++;
 		}
 	    }
 	}
@@ -62,11 +66,15 @@ public class Test3DPerlin extends SimpleApplication{
         Node terrainNode = new Node();
         terrainNode.addControl(blockTerrain);
 	terrainNode.move(0, -yChunks*blockTerrain.getSettings().getChunkSizeY()/2, 0);
-	//terrainNode.setShadowMode(RenderQueue.ShadowMode.CastAndReceive);
+        terrainNode.setShadowMode(RenderQueue.ShadowMode.CastAndReceive);
         rootNode.attachChild(terrainNode);
         
         cam.setLocation(new Vector3f(-10, 10, 16));
         cam.lookAtDirection(new Vector3f(1, -0.56f, -1), Vector3f.UNIT_Y);
         flyCam.setMoveSpeed(50);
+	
+	
+	long endTime = System.nanoTime();
+	System.out.println(endTime - startTime);
     }
 }
